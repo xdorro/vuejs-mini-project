@@ -17,10 +17,10 @@
   </div>
 </template>
 <script>
-import AdminSidebar from "@/components/partials/AdminSidebar";
+import AdminSidebar from '../../views/Sidebar';
 
 export default {
-  name: "dashboard",
+  name: 'dashboard',
   components: {
     AdminSidebar,
   },

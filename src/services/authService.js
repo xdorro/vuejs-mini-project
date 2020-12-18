@@ -1,52 +1,34 @@
-import { BehaviorSubject } from "rxjs";
+import axios from 'axios';
 
-import config from "@/config";
-import { requestOptions } from "@/helpers/request";
-import { handleResponse } from "@/helpers/response";
+const API_URL = 'http://localhost:8080/api/auth/';
 
-const currentUserSubject = new BehaviorSubject(
-    JSON.parse(localStorage.getItem("currentUser"))
-);
+class AuthService {
+  login(user) {
+    return axios
+      .post(API_URL + 'login', {
+        email: user.email,
+        password: user.password
+      })
+      .then(response => {
+        // console.log(response.data.result);
+        if (response.data.result.accessToken) {
+          localStorage.setItem('user', JSON.stringify(response.data.result));
+        }
 
-export const authService = {
-    login,
-    logout,
-    currentUser,
-    isAuthenticated,
-    isAuthorized,
-};
+        return response.data;
+      });
+  }
 
-function currentUser() {
-    return currentUserSubject.value;
+  logout() {
+    localStorage.removeItem('user');
+  }
+
+  register(user) {
+    return axios.post(API_URL + 'register', {
+      email: user.email,
+      password: user.password
+    });
+  }
 }
 
-function isAuthenticated() {
-    return this.currentUser() !== null;
-}
-
-function isAuthorized(role) {
-    return (
-        this.isAuthenticated() && this.currentUser().roles.indexOf(role) >= 0
-    );
-}
-
-function login(email, password) {
-    return fetch(
-        `${config.baseApi}/auth/login`,
-        requestOptions.post({ email, password })
-    )
-        .then(handleResponse)
-        .then((user) => {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem("currentUser", JSON.stringify(user.result));
-            currentUserSubject.next(user);
-
-            return user;
-        });
-}
-
-function logout() {
-    // remove user from local storage to log user out
-    localStorage.removeItem("currentUser");
-    currentUserSubject.next(null);
-}
+export default new AuthService();
