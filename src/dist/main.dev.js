@@ -12,8 +12,6 @@ var _store = _interopRequireDefault(require("./store"));
 
 var _vuex = _interopRequireDefault(require("vuex"));
 
-var _jquery = _interopRequireDefault(require("jquery"));
-
 require("bootstrap");
 
 require("bootstrap/dist/css/bootstrap.min.css");
@@ -39,8 +37,9 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 // jQuery
-global.jQuery = _jquery["default"];
-window.$ = _jquery["default"]; // Boostrap
+global.jQuery = require('jquery');
+var $ = global.jQuery;
+window.$ = $; // Boostrap
 
 Object.keys(rules).forEach(function (rule) {
   (0, _veeValidate.extend)(rule, rules[rule]);

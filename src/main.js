@@ -5,8 +5,8 @@ import store from './store';
 import Vuex from 'vuex';
 
 // jQuery
-import $ from 'jquery';
-global.jQuery = $;
+global.jQuery = require('jquery');
+var $ = global.jQuery;
 window.$ = $;
 
 // Boostrap

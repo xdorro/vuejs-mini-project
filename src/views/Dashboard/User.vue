@@ -281,11 +281,11 @@ export default {
             this.users = response.data.result;
           }
         },
-        (error) => {
-          Swal.fire({
-            icon: 'error',
-            title: error.response.data.message,
-          });
+        () => {
+          // Swal.fire({
+          //   icon: 'error',
+          //   title: error.response.data.message,
+          // });
         }
       );
     },

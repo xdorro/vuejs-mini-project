@@ -41,11 +41,11 @@ function () {
       });
     }
   }, {
-    key: "importQuestions",
-    value: function importQuestions(level, questions) {
+    key: "uploadQuestions",
+    value: function uploadQuestions(level, questions) {
       return (0, _axios["default"])({
         method: 'post',
-        url: "".concat(API_URL, "/save/").concat(level),
+        url: "".concat(API_URL, "/saveall/").concat(level),
         headers: (0, _authHeader["default"])(),
         data: questions
       });

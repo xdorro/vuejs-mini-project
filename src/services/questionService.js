@@ -12,10 +12,10 @@ class QuestionService {
     return axios.get(`${API_URL}/${id}`, { headers: authHeader() });
   }
 
-  importQuestions(level, questions) {
+  uploadQuestions(level, questions) {
     return axios({
       method: 'post',
-      url: `${API_URL}/save/${level}`,
+      url: `${API_URL}/saveall/${level}`,
       headers: authHeader(),
       data: questions
     });

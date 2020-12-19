@@ -123,50 +123,81 @@
             </button>
           </div>
 
-          <form name="frm_upload" class="needs-validation" novalidate>
-            <div class="modal-body">
-              <div class="form-group">
-                <select class="custom-select" name="upload_level" required>
-                  <option selected value="F">Fresher</option>
-                  <option value="J">Junior</option>
-                  <option value="M">Middle</option>
-                  <option value="S">Senior</option>
-                </select>
+          <ValidationObserver v-slot="{ handleSubmit }">
+            <form
+              name="frm_upload"
+              @submit.prevent="handleSubmit(saveAll)"
+              class="needs-validation"
+              novalidate
+            >
+              <div class="modal-body">
+                <ValidationProvider
+                  name="Cấp độ"
+                  rules="required|oneOf:F,J,M,S"
+                  v-slot="{ classes, errors }"
+                >
+                  <div class="form-group">
+                    <select
+                      class="custom-select"
+                      name="upload_level"
+                      required
+                      v-model="upload_level"
+                      :class="classes"
+                    >
+                      <option selected value="" disabled>
+                        Vui lòng chọn cấp độ
+                      </option>
+                      <option value="F">Fresher</option>
+                      <option value="J">Junior</option>
+                      <option value="M">Middle</option>
+                      <option value="S">Senior</option>
+                    </select>
+                    <div class="invalid-feedback" v-if="errors">
+                      {{ errors[0] }}
+                    </div>
+                  </div>
+                </ValidationProvider>
 
-                <div class="invalid-feedback">
-                  <span ng-show="required"
-                    >Cấp độ câu hỏi không được để trống</span
-                  >
-                </div>
+                <ValidationProvider
+                  name="File câu hỏi"
+                  rules="required|ext:xls,xlsx"
+                  v-slot="{ classes, errors }"
+                  ref="provider"
+                >
+                  <div class="form-group">
+                    <div class="custom-file">
+                      <input
+                        type="file"
+                        class="custom-file-input"
+                        id="upload_file"
+                        accept=".xls,.xlsx"
+                        required
+                        :class="classes"
+                        @change="handleFileChange"
+                      />
+                      <label class="custom-file-label" for="upload_file"
+                        >Chọn file câu hỏi</label
+                      >
+                      <div class="invalid-feedback" v-if="errors">
+                        {{ errors[0] }}
+                      </div>
+                    </div>
+                  </div>
+                </ValidationProvider>
               </div>
 
-              <div class="form-group">
-                <div class="custom-file">
-                  <input
-                    type="file"
-                    class="custom-file-input"
-                    id="upload_file"
-                    accept=".xls,.xlsx"
-                    required
-                  />
-                  <label class="custom-file-label" for="upload_file"
-                    >Chọn file câu hỏi</label
-                  >
-                </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Huỷ
+                </button>
+                <button type="submit" class="btn btn-primary">Thêm</button>
               </div>
-            </div>
-
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-dismiss="modal"
-              >
-                Huỷ
-              </button>
-              <button type="submit" class="btn btn-primary">Thêm</button>
-            </div>
-          </form>
+            </form>
+          </ValidationObserver>
         </div>
       </div>
     </div>
@@ -176,6 +207,7 @@
 import AdminSidebar from '../../views/Sidebar.vue';
 import QuestionService from '../../services/questionService';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import XLSX from 'xlsx';
 
 export default {
   name: 'dashboard.question',
@@ -186,6 +218,7 @@ export default {
     return {
       search: '',
       questions: [],
+      upload_level: '',
       upload_questions: '',
       create_question: {},
       update_question: {},
@@ -211,16 +244,78 @@ export default {
             this.questions = response.data.result;
           }
         },
-        (error) => {
-          Swal.fire({
-            icon: 'error',
-            title: error.response.data.message,
-          });
+        () => {
+          // Swal.fire({
+          //   icon: 'error',
+          //   title: error.response.data.message,
+          // });
         }
       );
     },
+    async handleFileChange(e) {
+      const { valid } = await this.$refs.provider.validate(e);
+
+      if (valid) {
+        let selectedFile = event.target.files[0];
+        let fileReader = new FileReader();
+
+        fileReader.readAsBinaryString(selectedFile);
+
+        fileReader.onload = function (e) {
+          let data = e.target.result;
+
+          let workbook = XLSX.read(data, {
+            type: 'binary',
+          });
+
+          workbook.SheetNames.forEach((sheet) => {
+            let rowObject = XLSX.utils.sheet_to_row_object_array(
+              workbook.Sheets[sheet]
+            );
+
+            let jsonObject = JSON.stringify(rowObject);
+            this.upload_questions = jsonObject;
+
+            console.log(jsonObject);
+          });
+        };
+      }
+    },
     upload: function () {
       $('#uploadModal').modal('show');
+    },
+    saveAll: function () {
+      QuestionService.uploadQuestions(
+        this.upload_level,
+        this.upload_questions
+      ).then(
+        (response) => {
+          if (response.data.status == true) {
+            // message;
+            Swal.fire({
+              icon: 'success',
+              title: response.data.message,
+            });
+
+            this.upload_level = '';
+            this.upload_questions = '';
+            $('#uploadModal').modal('hide');
+
+            this.load();
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: response.data.message,
+            });
+          }
+        },
+        () => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Upload câu hỏi không thành công',
+          });
+        }
+      );
     },
     create: function () {
       $('#createModal').modal('show');
