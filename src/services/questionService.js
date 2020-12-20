@@ -12,7 +12,7 @@ class QuestionService {
     return axios.get(`${API_URL}/${id}`, { headers: authHeader() });
   }
 
-  uploadQuestions(level, questions) {
+  uploadQuestions(questions, level) {
     return axios({
       method: 'post',
       url: `${API_URL}/saveall/${level}`,
@@ -21,27 +21,21 @@ class QuestionService {
     });
   }
 
-  createNewQuestion(email, password) {
+  createNewQuestion(question) {
     return axios({
       method: 'post',
       url: `${API_URL}`,
       headers: authHeader(),
-      data: {
-        email: email,
-        password: password
-      }
+      data: question
     });
   }
 
-  updateQuestionById(id, old_password, new_password) {
+  updateQuestionById(id, question) {
     return axios({
       method: 'put',
       url: `${API_URL}/${id}`,
       headers: authHeader(),
-      data: {
-        old_password: old_password,
-        new_password: new_password
-      }
+      data: question
     });
   }
 

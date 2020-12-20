@@ -396,7 +396,7 @@ export default {
               // console.log(error.response);
               Swal.fire({
                 icon: 'error',
-                title: 'Thêm học viên không thành công',
+                title: 'Xoá học viên không thành công',
               });
             }
           );

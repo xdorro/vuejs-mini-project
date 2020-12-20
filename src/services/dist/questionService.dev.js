@@ -42,7 +42,7 @@ function () {
     }
   }, {
     key: "uploadQuestions",
-    value: function uploadQuestions(level, questions) {
+    value: function uploadQuestions(questions, level) {
       return (0, _axios["default"])({
         method: 'post',
         url: "".concat(API_URL, "/saveall/").concat(level),
@@ -52,28 +52,22 @@ function () {
     }
   }, {
     key: "createNewQuestion",
-    value: function createNewQuestion(email, password) {
+    value: function createNewQuestion(question) {
       return (0, _axios["default"])({
         method: 'post',
         url: "".concat(API_URL),
         headers: (0, _authHeader["default"])(),
-        data: {
-          email: email,
-          password: password
-        }
+        data: question
       });
     }
   }, {
     key: "updateQuestionById",
-    value: function updateQuestionById(id, old_password, new_password) {
+    value: function updateQuestionById(id, question) {
       return (0, _axios["default"])({
         method: 'put',
         url: "".concat(API_URL, "/").concat(id),
         headers: (0, _authHeader["default"])(),
-        data: {
-          old_password: old_password,
-          new_password: new_password
-        }
+        data: question
       });
     }
   }, {
