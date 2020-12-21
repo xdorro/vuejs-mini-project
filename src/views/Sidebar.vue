@@ -4,19 +4,19 @@
       >Bảng điều khiển</router-link
     >
     <router-link
-      to="/dashboard/user"
+      to="/dashboard/users"
       class="list-group-item list-group-item-action"
       >Danh sách học viên</router-link
     >
     <router-link
-      to="/dashboard/question"
+      to="/dashboard/questions"
       class="list-group-item list-group-item-action"
       >Danh sách câu hỏi</router-link
     >
-    <!-- <router-link
-      to="/dashboard/user"
+    <router-link
+      to="/dashboard/tests"
       class="list-group-item list-group-item-action"
       >Danh sách bài thi</router-link
-    > -->
+    >
   </div>
 </template>

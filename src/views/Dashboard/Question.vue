@@ -718,8 +718,8 @@
   </div>
 </template>
 <script>
-import AdminSidebar from '../../views/Sidebar.vue';
-import QuestionService from '../../services/questionService';
+import AdminSidebar from '@/views/Sidebar.vue';
+import QuestionService from '@/services/questionService';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import XLSX from 'xlsx';
 
@@ -807,8 +807,6 @@ export default {
             );
 
             seft.upload_questions = JSON.stringify(rowObject);
-
-            console.log(seft.upload_questions);
           });
         };
       }
@@ -1010,15 +1008,12 @@ export default {
               }
             },
             () => {
-              // console.log(error.response);
               Swal.fire({
                 icon: 'error',
                 title: 'Xoá câu hỏi không thành công',
               });
             }
           );
-          // For more information about handling dismissals please visit
-          // https://sweetalert2.github.io/#handling-dismissals
         }
       });
     },

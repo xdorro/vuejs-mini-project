@@ -238,8 +238,8 @@
   </div>
 </template>
 <script>
-import AdminSidebar from '../../views/Sidebar.vue';
-import UserService from '../../services/userService';
+import AdminSidebar from '@/views/Sidebar.vue';
+import UserService from '@/services/userService';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 export default {
@@ -337,7 +337,6 @@ export default {
       ).then(
         (response) => {
           if (response.data.status == true) {
-            // message;
             Swal.fire({
               icon: 'success',
               title: response.data.message,
@@ -378,7 +377,6 @@ export default {
           UserService.deleteUserById(id).then(
             (response) => {
               if (response.data.status == true) {
-                // message;
                 Swal.fire({
                   icon: 'success',
                   title: response.data.message,
@@ -393,15 +391,12 @@ export default {
               }
             },
             () => {
-              // console.log(error.response);
               Swal.fire({
                 icon: 'error',
                 title: 'Xoá học viên không thành công',
               });
             }
           );
-          // For more information about handling dismissals please visit
-          // https://sweetalert2.github.io/#handling-dismissals
         }
       });
     },

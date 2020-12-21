@@ -17,7 +17,7 @@
   </div>
 </template>
 <script>
-import AdminSidebar from '../../views/Sidebar';
+import AdminSidebar from '@/views/Sidebar';
 
 export default {
   name: 'dashboard',

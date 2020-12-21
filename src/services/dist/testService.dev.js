@@ -17,62 +17,52 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var API_URL = 'http://localhost:8080/api/questions';
+var API_URL = "http://localhost:8080/api/tests";
 
-var QuestionService =
+var TestService =
 /*#__PURE__*/
 function () {
-  function QuestionService() {
-    _classCallCheck(this, QuestionService);
+  function TestService() {
+    _classCallCheck(this, TestService);
   }
 
-  _createClass(QuestionService, [{
-    key: "getAllQuestions",
-    value: function getAllQuestions() {
+  _createClass(TestService, [{
+    key: "getAllTests",
+    value: function getAllTests() {
       return _axios["default"].get(API_URL, {
         headers: (0, _authHeader["default"])()
       });
     }
   }, {
-    key: "getQuestionById",
-    value: function getQuestionById(id) {
+    key: "getTestById",
+    value: function getTestById(id) {
       return _axios["default"].get("".concat(API_URL, "/").concat(id), {
         headers: (0, _authHeader["default"])()
       });
     }
   }, {
-    key: "uploadQuestions",
-    value: function uploadQuestions(questions, level) {
-      return (0, _axios["default"])({
-        method: 'post',
-        url: "".concat(API_URL, "/saveall/").concat(level),
-        headers: (0, _authHeader["default"])(),
-        data: questions
-      });
-    }
-  }, {
-    key: "createNewQuestion",
-    value: function createNewQuestion(question) {
+    key: "createNewTest",
+    value: function createNewTest(test) {
       return (0, _axios["default"])({
         method: 'post',
         url: "".concat(API_URL),
         headers: (0, _authHeader["default"])(),
-        data: question
+        data: test
       });
     }
   }, {
-    key: "updateQuestionById",
-    value: function updateQuestionById(id, question) {
+    key: "updateTestById",
+    value: function updateTestById(id, test) {
       return (0, _axios["default"])({
         method: 'put',
         url: "".concat(API_URL, "/").concat(id),
         headers: (0, _authHeader["default"])(),
-        data: question
+        data: test
       });
     }
   }, {
-    key: "deleteQuestionById",
-    value: function deleteQuestionById(id) {
+    key: "deleteTestById",
+    value: function deleteTestById(id) {
       return (0, _axios["default"])({
         method: 'delete',
         url: "".concat(API_URL, "/").concat(id),
@@ -81,9 +71,9 @@ function () {
     }
   }]);
 
-  return QuestionService;
+  return TestService;
 }();
 
-var _default = new QuestionService();
+var _default = new TestService();
 
 exports["default"] = _default;

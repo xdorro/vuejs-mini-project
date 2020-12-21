@@ -7,34 +7,40 @@ export const router = new Router({
   mode: 'history',
   linkExactActiveClass: 'active',
   routes: [
+    { path: '*', name: 'redirect', redirect: '/' },
     {
       path: '/',
       name: 'home',
-      component: () => import('./views/Home.vue')
+      component: () => import('@/views/Home.vue')
     },
     {
       path: '/login',
-      component: () => import('./views/Auth/Login.vue')
+      component: () => import('@/views/Auth/Login.vue')
     },
     {
       path: '/profile',
       name: 'profile',
-      component: () => import('./views/Auth/Profile.vue')
+      component: () => import('@/views/Auth/Profile.vue')
     },
     {
       path: '/dashboard',
       name: 'dashboard',
-      component: () => import('./views/Dashboard/Dashboard.vue')
+      component: () => import('@/views/Dashboard/Dashboard.vue')
     },
     {
-      path: '/dashboard/user',
+      path: '/dashboard/users',
       name: 'dashboard.user',
-      component: () => import('./views/Dashboard/User.vue')
+      component: () => import('@/views/Dashboard/User.vue')
     },
     {
-      path: '/dashboard/question',
+      path: '/dashboard/questions',
       name: 'dashboard.question',
-      component: () => import('./views/Dashboard/Question.vue')
+      component: () => import('@/views/Dashboard/Question.vue')
+    },
+    {
+      path: '/dashboard/tests',
+      name: 'dashboard.tests',
+      component: () => import('@/views/Dashboard/Test.vue')
     }
   ]
 });
@@ -46,9 +52,6 @@ router.beforeEach((to, from, next) => {
 
   // trying to access a restricted page + not logged in
   // redirect to login page
-  if (authRequired && !loggedIn) {
-    next('/login');
-  } else {
-    next();
-  }
+  if (authRequired && !loggedIn) next('/login');
+  else next();
 });
