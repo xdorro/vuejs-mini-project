@@ -9,7 +9,11 @@ class TestService {
   }
 
   getTestById(id) {
-    return axios.get(`${API_URL}/${id}`, { headers: authHeader() });
+    return axios({
+      method: 'get',
+      url: `${API_URL}/${id}`,
+      headers: authHeader()
+    });
   }
 
   createNewTest(test) {
@@ -18,6 +22,24 @@ class TestService {
       url: `${API_URL}`,
       headers: authHeader(),
       data: test
+    });
+  }
+
+  addQuestionsTestById(id, questions) {
+    return axios({
+      method: 'post',
+      url: `${API_URL}/${id}/questions`,
+      headers: authHeader(),
+      data: questions
+    });
+  }
+
+  addUsersTestById(id, users) {
+    return axios({
+      method: 'post',
+      url: `${API_URL}/${id}/users`,
+      headers: authHeader(),
+      data: users
     });
   }
 

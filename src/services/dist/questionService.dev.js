@@ -17,74 +17,62 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var API_URL = "http://localhost:8080/api/tests";
+var API_URL = 'http://localhost:8080/api/questions';
 
-var TestService =
+var QuestionService =
 /*#__PURE__*/
 function () {
-  function TestService() {
-    _classCallCheck(this, TestService);
+  function QuestionService() {
+    _classCallCheck(this, QuestionService);
   }
 
-  _createClass(TestService, [{
-    key: "getAllTests",
-    value: function getAllTests() {
+  _createClass(QuestionService, [{
+    key: "getAllQuestions",
+    value: function getAllQuestions() {
       return _axios["default"].get(API_URL, {
         headers: (0, _authHeader["default"])()
       });
     }
   }, {
-    key: "getTestById",
-    value: function getTestById(id) {
-      return (0, _axios["default"])({
-        method: 'get',
-        url: "".concat(API_URL, "/").concat(id),
+    key: "getQuestionById",
+    value: function getQuestionById(id) {
+      return _axios["default"].get("".concat(API_URL, "/").concat(id), {
         headers: (0, _authHeader["default"])()
       });
     }
   }, {
-    key: "createNewTest",
-    value: function createNewTest(test) {
+    key: "uploadQuestions",
+    value: function uploadQuestions(questions, level) {
       return (0, _axios["default"])({
         method: 'post',
-        url: "".concat(API_URL),
-        headers: (0, _authHeader["default"])(),
-        data: test
-      });
-    }
-  }, {
-    key: "addQuestionsTestById",
-    value: function addQuestionsTestById(id, questions) {
-      return (0, _axios["default"])({
-        method: 'post',
-        url: "".concat(API_URL, "/").concat(id, "/questions"),
+        url: "".concat(API_URL, "/saveall/").concat(level),
         headers: (0, _authHeader["default"])(),
         data: questions
       });
     }
   }, {
-    key: "addUsersTestById",
-    value: function addUsersTestById(id, users) {
+    key: "createNewQuestion",
+    value: function createNewQuestion(question) {
       return (0, _axios["default"])({
         method: 'post',
-        url: "".concat(API_URL, "/").concat(id, "/users"),
+        url: "".concat(API_URL),
         headers: (0, _authHeader["default"])(),
-        data: users
+        data: question
       });
     }
   }, {
-    key: "updateTestById",
-    value: function updateTestById(id, test) {
+    key: "updateQuestionById",
+    value: function updateQuestionById(id, question) {
       return (0, _axios["default"])({
         method: 'put',
         url: "".concat(API_URL, "/").concat(id),
         headers: (0, _authHeader["default"])(),
-        data: test
+        data: question
       });
     }
   }, {
-    key: "deleteTestById",
-    value: function deleteTestById(id) {
+    key: "deleteQuestionById",
+    value: function deleteQuestionById(id) {
       return (0, _axios["default"])({
         method: 'delete',
         url: "".concat(API_URL, "/").concat(id),
@@ -93,9 +81,9 @@ function () {
     }
   }]);
 
-  return TestService;
+  return QuestionService;
 }();
 
-var _default = new TestService();
+var _default = new QuestionService();
 
 exports["default"] = _default;

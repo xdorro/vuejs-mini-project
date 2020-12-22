@@ -17,74 +17,58 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var API_URL = "http://localhost:8080/api/tests";
+var API_URL = 'http://localhost:8080/api/users';
 
-var TestService =
+var UserService =
 /*#__PURE__*/
 function () {
-  function TestService() {
-    _classCallCheck(this, TestService);
+  function UserService() {
+    _classCallCheck(this, UserService);
   }
 
-  _createClass(TestService, [{
-    key: "getAllTests",
-    value: function getAllTests() {
+  _createClass(UserService, [{
+    key: "getAllUsers",
+    value: function getAllUsers() {
       return _axios["default"].get(API_URL, {
         headers: (0, _authHeader["default"])()
       });
     }
   }, {
-    key: "getTestById",
-    value: function getTestById(id) {
-      return (0, _axios["default"])({
-        method: 'get',
-        url: "".concat(API_URL, "/").concat(id),
+    key: "getUserById",
+    value: function getUserById(id) {
+      return _axios["default"].get("".concat(API_URL, "/").concat(id), {
         headers: (0, _authHeader["default"])()
       });
     }
   }, {
-    key: "createNewTest",
-    value: function createNewTest(test) {
+    key: "createNewUser",
+    value: function createNewUser(email, password) {
       return (0, _axios["default"])({
         method: 'post',
         url: "".concat(API_URL),
         headers: (0, _authHeader["default"])(),
-        data: test
+        data: {
+          email: email,
+          password: password
+        }
       });
     }
   }, {
-    key: "addQuestionsTestById",
-    value: function addQuestionsTestById(id, questions) {
-      return (0, _axios["default"])({
-        method: 'post',
-        url: "".concat(API_URL, "/").concat(id, "/questions"),
-        headers: (0, _authHeader["default"])(),
-        data: questions
-      });
-    }
-  }, {
-    key: "addUsersTestById",
-    value: function addUsersTestById(id, users) {
-      return (0, _axios["default"])({
-        method: 'post',
-        url: "".concat(API_URL, "/").concat(id, "/users"),
-        headers: (0, _authHeader["default"])(),
-        data: users
-      });
-    }
-  }, {
-    key: "updateTestById",
-    value: function updateTestById(id, test) {
+    key: "updateUserById",
+    value: function updateUserById(id, old_password, new_password) {
       return (0, _axios["default"])({
         method: 'put',
         url: "".concat(API_URL, "/").concat(id),
         headers: (0, _authHeader["default"])(),
-        data: test
+        data: {
+          old_password: old_password,
+          new_password: new_password
+        }
       });
     }
   }, {
-    key: "deleteTestById",
-    value: function deleteTestById(id) {
+    key: "deleteUserById",
+    value: function deleteUserById(id) {
       return (0, _axios["default"])({
         method: 'delete',
         url: "".concat(API_URL, "/").concat(id),
@@ -93,9 +77,9 @@ function () {
     }
   }]);
 
-  return TestService;
+  return UserService;
 }();
 
-var _default = new TestService();
+var _default = new UserService();
 
 exports["default"] = _default;

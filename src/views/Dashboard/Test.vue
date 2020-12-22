@@ -45,10 +45,14 @@
                 <th scope="row">{{ index + 1 }}</th>
                 <td>{{ test.testName }}</td>
                 <td>
-                  <span class="badge badge-primary">20</span>
+                  <span class="badge badge-primary">{{
+                    test.questionTestEntityList.length
+                  }}</span>
                 </td>
                 <td>
-                  <span class="badge badge-success">10</span>
+                  <span class="badge badge-success">{{
+                    test.userTestEntityList.length
+                  }}</span>
                 </td>
                 <td>
                   <div
@@ -87,7 +91,7 @@
       data-backdrop="static"
       aria-hidden="true"
     >
-      <div class="modal-dialog modal-xl" role="document">
+      <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Thêm mới bài thi</h5>
@@ -103,7 +107,7 @@
 
           <ValidationObserver v-slot="{ handleSubmit }">
             <form
-              @submit.prevent="handleSubmit(saveAll)"
+              @submit.prevent="handleSubmit(store)"
               class="needs-validation"
               novalidate
             >
@@ -158,13 +162,13 @@
                       v-slot="{ classes, errors }"
                     >
                       <label>Thời gian bắt đầu</label>
-                      <input
+                      <ejs-datetimepicker
                         type="text"
                         class="form-control"
                         placeholder="Thời gian bắt đầu"
                         :class="classes"
                         v-model="test_detail.testDateBegin"
-                      />
+                      ></ejs-datetimepicker>
                       <div class="invalid-feedback" v-if="errors">
                         {{ errors[0] }}
                       </div>
@@ -174,17 +178,147 @@
                   <div class="form-group col-md-6">
                     <ValidationProvider
                       name="Thời gian kết thúc"
-                      rules="required|integer"
+                      rules="required"
                       v-slot="{ classes, errors }"
                     >
                       <label>Thời gian kết thúc</label>
-                      <input
+                      <ejs-datetimepicker
                         type="text"
                         class="form-control"
                         placeholder="Thời gian kết thúc"
                         :class="classes"
                         v-model="test_detail.testDateFinish"
+                      ></ejs-datetimepicker>
+                      <div class="invalid-feedback" v-if="errors">
+                        {{ errors[0] }}
+                      </div>
+                    </ValidationProvider>
+                  </div>
+                </div>
+              </div>
+
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Huỷ
+                </button>
+                <button type="submit" class="btn btn-primary">Thêm</button>
+              </div>
+            </form>
+          </ValidationObserver>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="updateModal"
+      tabindex="-1"
+      role="dialog"
+      data-backdrop="static"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Cập nhật bài thi</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <ValidationObserver v-slot="{ handleSubmit }">
+            <form
+              @submit.prevent="handleSubmit(update)"
+              class="needs-validation"
+              novalidate
+            >
+              <div class="modal-body">
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <ValidationProvider
+                      name="Tên bài thi"
+                      rules="required"
+                      v-slot="{ classes, errors }"
+                    >
+                      <label>Tên bài thi</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Tên bài thi"
+                        :class="classes"
+                        v-model="test_detail.testName"
                       />
+                      <div class="invalid-feedback" v-if="errors">
+                        {{ errors[0] }}
+                      </div>
+                    </ValidationProvider>
+                  </div>
+
+                  <div class="form-group col-md-6">
+                    <ValidationProvider
+                      name="Thời gian thi"
+                      rules="required|integer"
+                      v-slot="{ classes, errors }"
+                    >
+                      <label>Thời gian thi (phút)</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Thời gian thi"
+                        :class="classes"
+                        v-model="test_detail.testTime"
+                      />
+                      <div class="invalid-feedback" v-if="errors">
+                        {{ errors[0] }}
+                      </div>
+                    </ValidationProvider>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <ValidationProvider
+                      name="Thời gian bắt đầu"
+                      rules="required"
+                      v-slot="{ classes, errors }"
+                    >
+                      <label>Thời gian bắt đầu</label>
+                      <ejs-datetimepicker
+                        type="text"
+                        class="form-control"
+                        placeholder="Thời gian bắt đầu"
+                        :class="classes"
+                        v-model="test_detail.testDateBegin"
+                      ></ejs-datetimepicker>
+                      <div class="invalid-feedback" v-if="errors">
+                        {{ errors[0] }}
+                      </div>
+                    </ValidationProvider>
+                  </div>
+
+                  <div class="form-group col-md-6">
+                    <ValidationProvider
+                      name="Thời gian kết thúc"
+                      rules="required"
+                      v-slot="{ classes, errors }"
+                    >
+                      <label>Thời gian kết thúc</label>
+                      <ejs-datetimepicker
+                        type="text"
+                        class="form-control"
+                        placeholder="Thời gian kết thúc"
+                        :class="classes"
+                        v-model="test_detail.testDateFinish"
+                      ></ejs-datetimepicker>
                       <div class="invalid-feedback" v-if="errors">
                         {{ errors[0] }}
                       </div>
@@ -240,8 +374,7 @@
                             <label class="form-checkbox">
                               <input
                                 type="checkbox"
-                                v-model="isSelectAllQuestion"
-                                @click="selectAllQuestions"
+                                v-model="selectAllQuestions"
                               />
                               <i class="form-icon"></i>
                             </label>
@@ -263,7 +396,7 @@
                               <input
                                 type="checkbox"
                                 :value="question.id"
-                                v-model="test_detail.questionTestEntityList"
+                                v-model="questionTestEntityList"
                               />
                               <i class="form-icon"></i>
                             </label>
@@ -317,11 +450,7 @@
                         <tr>
                           <th scope="col">
                             <label class="form-checkbox">
-                              <input
-                                type="checkbox"
-                                v-model="isSelectAllUser"
-                                @click="selectAllUsers"
-                              />
+                              <input type="checkbox" v-model="selectAllUsers" />
                               <i class="form-icon"></i>
                             </label>
                           </th>
@@ -340,7 +469,7 @@
                               <input
                                 type="checkbox"
                                 :value="user.id"
-                                v-model="test_detail.userTestEntityList"
+                                v-model="userTestEntityList"
                               />
                               <i class="form-icon"></i>
                             </label>
@@ -371,22 +500,23 @@
     </div>
   </div>
 </template>
+
 <script>
 import AdminSidebar from '@/views/Sidebar.vue';
 import UserService from '@/services/userService';
 import QuestionService from '@/services/questionService';
 import TestService from '@/services/testService';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import Datepicker from 'vuejs-datetimepicker';
 
 export default {
   name: 'dashboard.test',
   components: {
     AdminSidebar,
+    Datepicker,
   },
   data: function () {
     return {
-      isSelectAllUser: false,
-      isSelectAllQuestion: false,
       search: '',
       searchQuestion: '',
       searchUser: '',
@@ -401,6 +531,8 @@ export default {
         questionTestEntityList: [],
         userTestEntityList: [],
       },
+      questionTestEntityList: [],
+      userTestEntityList: [],
     };
   },
   computed: {
@@ -421,6 +553,44 @@ export default {
         return test.testName.toLowerCase().includes(this.search.toLowerCase());
       });
     },
+    selectAllQuestions: {
+      get: function () {
+        return this.test_detail.questionTestEntityList
+          ? this.questionTestEntityList.length ==
+              this.test_detail.questionTestEntityList.length
+          : false;
+      },
+      set: function (value) {
+        var selected = [];
+
+        if (value) {
+          this.test_detail.questionTestEntityList.forEach(function (question) {
+            selected.push(question.question.id);
+          });
+        }
+
+        this.questionTestEntityList = selected;
+      },
+    },
+    selectAllUsers: {
+      get: function () {
+        return this.test_detail.userTestEntityList
+          ? this.userTestEntityList.length ==
+              this.test_detail.userTestEntityList.length
+          : false;
+      },
+      set: function (value) {
+        var selected = [];
+
+        if (value) {
+          this.test_detail.userTestEntityList.forEach(function (user) {
+            selected.push(user.user.id);
+          });
+        }
+
+        this.userTestEntityList = selected;
+      },
+    },
   },
   mounted() {
     this.load();
@@ -428,24 +598,6 @@ export default {
     this.loadUsers();
   },
   methods: {
-    selectAllQuestions: function () {
-      this.test_detail.userTestEntityList = [];
-
-      if (!this.isSelectAllUser) {
-        for (let i in this.users) {
-          this.test_detail.userTestEntityList.push(this.users[i].id);
-        }
-      }
-    },
-    selectAllUsers: function () {
-      this.test_detail.userTestEntityList = [];
-
-      if (!this.isSelectAllUser) {
-        for (let i in this.users) {
-          this.test_detail.userTestEntityList.push(this.users[i].id);
-        }
-      }
-    },
     load: function () {
       TestService.getAllTests().then(
         (response) => {
@@ -491,60 +643,23 @@ export default {
         }
       );
     },
-    upload: function () {
-      $('#uploadModal').modal('show');
-    },
-    saveAll: function () {
-      QuestionService.uploadQuestions(
-        this.upload_questions,
-        this.upload_level
-      ).then(
-        (response) => {
-          if (response.data.status == true) {
-            // message;
-            Swal.fire({
-              icon: 'success',
-              title: response.data.message,
-            });
-
-            this.upload_level = '';
-            // this.upload_questions = '';
-            $('#uploadModal').modal('hide');
-
-            this.load();
-          } else {
-            Swal.fire({
-              icon: 'error',
-              title: response.data.message,
-            });
-          }
-        },
-        () => {
-          Swal.fire({
-            icon: 'error',
-            title: 'Upload bài thi không thành công',
-          });
-        }
-      );
-    },
     create: function () {
-      this.question_detail = {
-        question: '',
-        a: '',
-        b: '',
-        c: '',
-        d: '',
-        answer: '',
-        level: '',
-        questionType: '',
+      this.test_detail = {
+        testName: '',
+        testTime: '',
+        testDateBegin: '',
+        testDateFinish: '',
+        questionTestEntityList: [],
+        userTestEntityList: [],
       };
+
+      this.questionTestEntityList = [];
+      this.userTestEntityList = [];
 
       $('#createModal').modal('show');
     },
     store: function () {
-      QuestionService.createNewQuestion(
-        JSON.stringify(this.question_detail)
-      ).then(
+      TestService.createNewTest(JSON.stringify(this.test_detail)).then(
         (response) => {
           if (response.data.status == true) {
             Swal.fire({
@@ -552,17 +667,16 @@ export default {
               title: response.data.message,
             });
 
-            this.question_detail = {
-              id: '',
-              question: '',
-              a: '',
-              b: '',
-              c: '',
-              d: '',
-              answer: '',
-              level: '',
-              questionType: '',
+            this.test_detail = {
+              testName: '',
+              testTime: '',
+              testDateBegin: '',
+              testDateFinish: '',
+              questionTestEntityList: [],
+              userTestEntityList: [],
             };
+            this.questionTestEntityList = [];
+            this.userTestEntityList = [];
 
             $('#createModal').modal('hide');
 
@@ -583,22 +697,27 @@ export default {
       );
     },
     edit: function (id) {
-      QuestionService.getQuestionById(id).then(
+      TestService.getTestById(id).then(
         (response) => {
           if (response.data.status == true) {
             let data = response.data.result;
-
-            this.question_detail = {
+            this.test_detail = {
               id: id,
-              question: data.question,
-              a: data.a,
-              b: data.b,
-              c: data.c,
-              d: data.d,
-              answer: data.answer,
-              level: data.level,
-              questionType: data.questionType,
+              testName: data.testName,
+              testTime: data.testTime,
+              testDateBegin: data.testDateBegin,
+              testDateFinish: data.testDateFinish,
+              questionTestEntityList: data.questionTestEntityList,
+              userTestEntityList: data.userTestEntityList,
             };
+
+            this.questionTestEntityList = data.questionTestEntityList.map(
+              (x) => x.question.id
+            );
+
+            this.userTestEntityList = data.userTestEntityList.map(
+              (x) => x.user.id
+            );
 
             $('#updateModal').modal('show');
 
@@ -619,33 +738,62 @@ export default {
       );
     },
     update: function () {
-      QuestionService.updateQuestionById(
-        this.question_detail.id,
-        JSON.stringify(this.question_detail)
+      var self = this;
+
+      TestService.updateTestById(
+        this.test_detail.id,
+        JSON.stringify(this.test_detail)
       ).then(
         (response) => {
           if (response.data.status == true) {
-            // message;
+            var question = false;
+            var user = false;
+
+            TestService.addQuestionsTestById(
+              self.test_detail.id,
+              JSON.stringify(self.questionTestEntityList)
+            ).then((response) => {
+              if (response.data.status == true) {
+                self.questionTestEntityList = [];
+              } else {
+                Swal.fire({
+                  icon: 'error',
+                  title: response.data.message,
+                });
+              }
+            });
+
+            TestService.addUsersTestById(
+              self.test_detail.id,
+              JSON.stringify(self.userTestEntityList)
+            ).then((response) => {
+              if (response.data.status == true) {
+                user = true;
+                self.userTestEntityList = [];
+              } else {
+                Swal.fire({
+                  icon: 'error',
+                  title: response.data.message,
+                });
+              }
+            });
+
             Swal.fire({
               icon: 'success',
               title: response.data.message,
             });
 
-            this.question_detail = {
+            self.test_detail = {
               id: '',
-              question: '',
-              a: '',
-              b: '',
-              c: '',
-              d: '',
-              answer: '',
-              level: '',
-              questionType: '',
+              testName: '',
+              testTime: '',
+              testDateBegin: '',
+              testDateFinish: '',
             };
 
             $('#updateModal').modal('hide');
 
-            this.load();
+            self.load();
           } else {
             Swal.fire({
               icon: 'error',
@@ -671,7 +819,7 @@ export default {
         cancelButtonText: 'Huỷ',
       }).then((result) => {
         if (result.value) {
-          QuestionService.deleteQuestionById(id).then(
+          TestService.deleteTestById(id).then(
             (response) => {
               if (response.data.status == true) {
                 Swal.fire({

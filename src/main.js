@@ -13,6 +13,15 @@ window.$ = $;
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+// DateTimePickerPlugin
+import { DateTimePickerPlugin } from "@syncfusion/ej2-vue-calendars";
+Vue.use(DateTimePickerPlugin);
+import '@syncfusion/ej2-base/styles/bootstrap.css';
+import '@syncfusion/ej2-inputs/styles/bootstrap.css';
+import '@syncfusion/ej2-popups/styles/bootstrap.css';
+import '@syncfusion/ej2-lists/styles/bootstrap.css';
+import "@syncfusion/ej2-vue-calendars/styles/bootstrap.css";
+
 // VeeValidate
 import {
   configure,
