@@ -5,7 +5,11 @@ const API_URL = `http://localhost:8080/api/tests`;
 
 class TestService {
   getAllTests() {
-    return axios.get(API_URL, { headers: authHeader() });
+    return axios({
+      method: 'get',
+      url: `${API_URL}`,
+      headers: authHeader()
+    });
   }
 
   getTestById(id) {

@@ -29,7 +29,9 @@ function () {
   _createClass(TestService, [{
     key: "getAllTests",
     value: function getAllTests() {
-      return _axios["default"].get(API_URL, {
+      return (0, _axios["default"])({
+        method: 'get',
+        url: "".concat(API_URL),
         headers: (0, _authHeader["default"])()
       });
     }

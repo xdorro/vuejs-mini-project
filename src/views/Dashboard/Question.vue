@@ -28,7 +28,6 @@
             <input
               type="text"
               class="form-control"
-              id="exampleFormControlInput1"
               placeholder="Tìm kiếm câu hỏi"
               v-model="search"
             />
@@ -308,7 +307,9 @@
                 <div class="form-group">
                   <ValidationProvider
                     name="Nội dung đáp án A"
-                    rules=""
+                    :rules="`${
+                      question_detail.questionType == 'TL' ? '' : 'required'
+                    }`"
                     v-slot="{ classes, errors }"
                   >
                     <label for="inputAddress">Đáp án A</label>
@@ -343,7 +344,9 @@
                 <div class="form-group">
                   <ValidationProvider
                     name="Nội dung đáp án B"
-                    rules=""
+                    :rules="`${
+                      question_detail.questionType == 'TL' ? '' : 'required'
+                    }`"
                     v-slot="{ classes, errors }"
                   >
                     <label for="inputAddress">Đáp án B</label>
@@ -377,7 +380,9 @@
                 <div class="form-group">
                   <ValidationProvider
                     name="Nội dung đáp án C"
-                    rules=""
+                    :rules="`${
+                      question_detail.questionType == 'TL' ? '' : 'required'
+                    }`"
                     v-slot="{ classes, errors }"
                   >
                     <label for="inputAddress">Đáp án C</label>
@@ -411,7 +416,9 @@
                 <div class="form-group">
                   <ValidationProvider
                     name="Nội dung đáp án D"
-                    rules=""
+                    :rules="`${
+                      question_detail.questionType == 'TL' ? '' : 'required'
+                    }`"
                     v-slot="{ classes, errors }"
                   >
                     <label for="inputAddress">Đáp án D</label>
@@ -565,7 +572,9 @@
                 <div class="form-group">
                   <ValidationProvider
                     name="Nội dung đáp án A"
-                    rules=""
+                    :rules="`${
+                      question_detail.questionType == 'TL' ? '' : 'required'
+                    }`"
                     v-slot="{ classes, errors }"
                   >
                     <label for="inputAddress">Đáp án A</label>
@@ -600,7 +609,9 @@
                 <div class="form-group">
                   <ValidationProvider
                     name="Nội dung đáp án B"
-                    rules=""
+                    :rules="`${
+                      question_detail.questionType == 'TL' ? '' : 'required'
+                    }`"
                     v-slot="{ classes, errors }"
                   >
                     <label for="inputAddress">Đáp án B</label>
@@ -634,7 +645,9 @@
                 <div class="form-group">
                   <ValidationProvider
                     name="Nội dung đáp án C"
-                    rules=""
+                    :rules="`${
+                      question_detail.questionType == 'TL' ? '' : 'required'
+                    }`"
                     v-slot="{ classes, errors }"
                   >
                     <label for="inputAddress">Đáp án C</label>
@@ -668,7 +681,9 @@
                 <div class="form-group">
                   <ValidationProvider
                     name="Nội dung đáp án D"
-                    rules=""
+                    :rules="`${
+                      question_detail.questionType == 'TL' ? '' : 'required'
+                    }`"
                     v-slot="{ classes, errors }"
                   >
                     <label for="inputAddress">Đáp án D</label>

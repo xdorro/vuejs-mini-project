@@ -16,6 +16,9 @@ function authHeader() {
     }; // for Spring Boot back-end
     // return { 'x-access-token': user.accessToken };       // for Node.js Express back-end
   } else {
-    return {};
+    return {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
+    };
   }
 }

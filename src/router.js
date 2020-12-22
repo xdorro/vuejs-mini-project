@@ -41,6 +41,16 @@ export const router = new Router({
       path: '/dashboard/tests',
       name: 'dashboard.tests',
       component: () => import('@/views/Dashboard/Test.vue')
+    },
+    {
+      path: '/dashboard/tests/:test_id',
+      name: 'dashboard.tests.users',
+      component: () => import('@/views/Dashboard/UserTest.vue')
+    },
+    {
+      path: '/dashboard/tests/:test_id/users/:user_id',
+      name: 'dashboard.tests.users.tasks',
+      component: () => import('@/views/Dashboard/UserTask.vue')
     }
   ]
 });

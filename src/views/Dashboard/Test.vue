@@ -60,6 +60,14 @@
                     role="group"
                     aria-label="First group"
                   >
+                    <router-link
+                      :to="{
+                        name: 'dashboard.tests.users',
+                        params: { test_id: test.id },
+                      }"
+                      class="btn btn-info"
+                      >Chấm bài</router-link
+                    >
                     <button
                       @click="edit(test.id)"
                       type="button"
@@ -555,17 +563,17 @@ export default {
     },
     selectAllQuestions: {
       get: function () {
-        return this.test_detail.questionTestEntityList
+        return this.questions
           ? this.questionTestEntityList.length ==
-              this.test_detail.questionTestEntityList.length
+              this.questions.length
           : false;
       },
       set: function (value) {
         var selected = [];
 
         if (value) {
-          this.test_detail.questionTestEntityList.forEach(function (question) {
-            selected.push(question.question.id);
+          this.questions.forEach(function (question) {
+            selected.push(question.id);
           });
         }
 
@@ -574,17 +582,17 @@ export default {
     },
     selectAllUsers: {
       get: function () {
-        return this.test_detail.userTestEntityList
+        return this.users
           ? this.userTestEntityList.length ==
-              this.test_detail.userTestEntityList.length
+              this.users.length
           : false;
       },
       set: function (value) {
         var selected = [];
 
         if (value) {
-          this.test_detail.userTestEntityList.forEach(function (user) {
-            selected.push(user.user.id);
+          this.users.forEach(function (user) {
+            selected.push(user.id);
           });
         }
 
@@ -675,6 +683,7 @@ export default {
               questionTestEntityList: [],
               userTestEntityList: [],
             };
+            
             this.questionTestEntityList = [];
             this.userTestEntityList = [];
 

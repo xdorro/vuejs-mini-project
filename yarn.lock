@@ -754,10 +754,10 @@
     string-width "^2.0.0"
     strip-ansi "^5"
 
-"@syncfusion/ej2-base@~18.4.30":
-  version "18.4.30"
-  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-base/-/ej2-base-18.4.30.tgz#df5458a581255cd07d3cf6c35d82ae9f8f9de6ab"
-  integrity sha512-tkwttxH+39/Kc/wk6J1XcBjKrne9VAN2DQsp8LZLnFC5rDocwXfptQ28H+5OiDhX5hU1/U3s2XifN/jLwG6OyQ==
+"@syncfusion/ej2-base@~18.4.30", "@syncfusion/ej2-base@~18.4.31":
+  version "18.4.31"
+  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-base/-/ej2-base-18.4.31.tgz#90a9202aa2aa93a9c4985226efba32f654fad09b"
+  integrity sha512-WT4SAqqk+igTs4jK6h8hylFd1VZWhuactRHSvVqdf1b3XHqG64BSyEEnMpQO3VynAkd66nNdnyUuaMPIIyCtdA==
   dependencies:
     "@syncfusion/ej2-icons" "~18.4.30"
 
@@ -768,14 +768,14 @@
   dependencies:
     "@syncfusion/ej2-base" "~18.4.30"
 
-"@syncfusion/ej2-calendars@18.4.30":
-  version "18.4.30"
-  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-calendars/-/ej2-calendars-18.4.30.tgz#7888240c49deef26568a6aa1b126ce551fe58d9c"
-  integrity sha512-552ZynopzGsDPjHz+TteDZ5IAAerxTHfCYrNse9XH/QXMIo4b2RLw8RRxH/wDoCmFZs4VO1eqa/Y+Ztka9ByJQ==
+"@syncfusion/ej2-calendars@18.4.31":
+  version "18.4.31"
+  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-calendars/-/ej2-calendars-18.4.31.tgz#7a3fe6b9300011be9d0b7eb595082c846438f7b5"
+  integrity sha512-6H7qmk27CW2zQfmUkV35Q/Imv9JMk8t19tUQLWi0nV7rBmwnomhywZ3fHeJ7EKNJojrW0vo3LMF74I0hUXFvUg==
   dependencies:
-    "@syncfusion/ej2-base" "~18.4.30"
+    "@syncfusion/ej2-base" "~18.4.31"
     "@syncfusion/ej2-buttons" "~18.4.30"
-    "@syncfusion/ej2-inputs" "~18.4.30"
+    "@syncfusion/ej2-inputs" "~18.4.31"
     "@syncfusion/ej2-lists" "~18.4.30"
     "@syncfusion/ej2-popups" "~18.4.30"
 
@@ -791,15 +791,15 @@
   resolved "https://registry.yarnpkg.com/@syncfusion/ej2-icons/-/ej2-icons-18.4.30.tgz#658f517a8163f0614453f9d420d0af03601ab9ee"
   integrity sha512-kUSNE0xglgwXdIsfXFpa4so9hLRUkvxEsSbZIZhhrJrc7Z8Y3Y7O8HUM9+rIJzY6cLG8KWy+A8tBO9qVADujfQ==
 
-"@syncfusion/ej2-inputs@~18.4.30":
-  version "18.4.30"
-  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-inputs/-/ej2-inputs-18.4.30.tgz#8c849384511ef4ee06eab3621271b9a42749ceab"
-  integrity sha512-HnXGGWQvx+z3lcXRMBdvNsmlaUCp9v9qxVGe2MRZEjL3FmPF8W34EzTrIXMHP+Taaq8rYOfETBwpEuNaUlGXGQ==
+"@syncfusion/ej2-inputs@~18.4.31":
+  version "18.4.31"
+  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-inputs/-/ej2-inputs-18.4.31.tgz#cc536c781979a9a73c82be52f1e49fd553b5c224"
+  integrity sha512-I61oUtvrFb572yTrN3cdf99MU3i4Z1eOXqfBJrsyKc9kMGKYGXmqECJK6Zvu0+Z2gvHq8og0EbgO8WzGlNccug==
   dependencies:
-    "@syncfusion/ej2-base" "~18.4.30"
+    "@syncfusion/ej2-base" "~18.4.31"
     "@syncfusion/ej2-buttons" "~18.4.30"
     "@syncfusion/ej2-popups" "~18.4.30"
-    "@syncfusion/ej2-splitbuttons" "~18.4.30"
+    "@syncfusion/ej2-splitbuttons" "~18.4.31"
 
 "@syncfusion/ej2-lists@~18.4.30":
   version "18.4.30"
@@ -818,12 +818,12 @@
     "@syncfusion/ej2-base" "~18.4.30"
     "@syncfusion/ej2-buttons" "~18.4.30"
 
-"@syncfusion/ej2-splitbuttons@~18.4.30":
-  version "18.4.30"
-  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-splitbuttons/-/ej2-splitbuttons-18.4.30.tgz#e7c86fec65edb320ccfa8a835dceced2ed5d9996"
-  integrity sha512-0VGjjjPE8UFPqON2617Xtdx2NpOMZgMxLLQLbV/kKMDQUZliBwZZXShWnt9YeRQA4YiKzWahgItfuwaFuQJboQ==
+"@syncfusion/ej2-splitbuttons@~18.4.31":
+  version "18.4.31"
+  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-splitbuttons/-/ej2-splitbuttons-18.4.31.tgz#ba02fda03f664f099e7ac16d3c5672d05108c30d"
+  integrity sha512-GJ/eaWCCNZlWoTXWO4u9Nax6e0pgGObowJ2kk+E8l6PfYXSp3w99ze7pwmRXxSaSWXwBL1jxY4j4GD6ewoyNNg==
   dependencies:
-    "@syncfusion/ej2-base" "~18.4.30"
+    "@syncfusion/ej2-base" "~18.4.31"
     "@syncfusion/ej2-popups" "~18.4.30"
 
 "@syncfusion/ej2-vue-base@~18.4.30":
@@ -834,12 +834,12 @@
     "@syncfusion/ej2-base" "~18.4.30"
 
 "@syncfusion/ej2-vue-calendars@^18.4.30":
-  version "18.4.30"
-  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-vue-calendars/-/ej2-vue-calendars-18.4.30.tgz#0758f09a29e68b7ba60fc3458eaa62933beb9f52"
-  integrity sha512-OfI9tZyVX+EyPWkqYg2JY9vTelgDfWu1euQwMjOn7LXsYxPJAxm6EtLUEuNMUcgJaFOKrUglwpvuEseU4EKDhA==
+  version "18.4.31"
+  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-vue-calendars/-/ej2-vue-calendars-18.4.31.tgz#f5fe59b10f0b9557e6b08c2656cbff91592acee3"
+  integrity sha512-Rty4gJBMid76vJe+xdTMmFmq/Ioz7AaT4i/lPC2EOYlOXSwQG2DSJtWYUfZtHzwrXADevE0SXFwXcYU3HCJEFQ==
   dependencies:
-    "@syncfusion/ej2-base" "~18.4.30"
-    "@syncfusion/ej2-calendars" "18.4.30"
+    "@syncfusion/ej2-base" "~18.4.31"
+    "@syncfusion/ej2-calendars" "18.4.31"
     "@syncfusion/ej2-vue-base" "~18.4.30"
 
 "@types/glob@^7.1.1":
@@ -2101,9 +2101,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001165:
-  version "1.0.30001168"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001168.tgz#6fcd098c139d003b9bd484cbb9ca26cb89907f9a"
-  integrity sha512-P2zmX7swIXKu+GMMR01TWa4csIKELTNnZKc+f1CjebmZJQtTAEXmpQSoKVJVVcvPGAA0TEYTOUp3VehavZSFPQ==
+  version "1.0.30001170"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001170.tgz#0088bfecc6a14694969e391cc29d7eb6362ca6a7"
+  integrity sha512-Dd4d/+0tsK0UNLrZs3CvNukqalnVTRrxb5mcQm8rHL49t7V5ZaTygwXkrq+FB+dVDf++4ri8eJnFEJAB8332PA==
 
 case-sensitive-paths-webpack-plugin@^2.2.0:
   version "2.3.0"
@@ -3178,9 +3178,9 @@ ejs@^2.6.1:
   integrity sha512-7vmuyh5+kuUyJKePhQfRQBhXV5Ce+RnaeeQArKu1EAMpL3WbgMt5WG6uQZpEVvYSSsxMXRKOewtDk9RaTKXRlA==
 
 electron-to-chromium@^1.3.621:
-  version "1.3.629"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.629.tgz#a08d13b64d90e3c77ec5b9bffa3efbc5b4a00969"
-  integrity sha512-iSPPJtPvHrMAvYOt+9cdbDmTasPqwnwz4lkP8Dn200gDNUBQOLQ96xUsWXBwXslAo5XxdoXAoQQ3RAy4uao9IQ==
+  version "1.3.631"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.631.tgz#b28ebc7bfb348bb0aede2fae8888d775ddb6f5ee"
+  integrity sha512-mPEG/52142po0XK1jQkZtbMmp38MZtQ3JDFItYxV65WXyhxDYEQ54tP4rb93m0RbMlZqQ+4zBw2N7UumSgGfbA==
 
 elliptic@^6.5.3:
   version "6.5.3"
@@ -4107,9 +4107,9 @@ get-caller-file@^2.0.1:
   integrity sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==
 
 get-intrinsic@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/get-intrinsic/-/get-intrinsic-1.0.1.tgz#94a9768fcbdd0595a1c9273aacf4c89d075631be"
-  integrity sha512-ZnWP+AmS1VUaLgTRy47+zKtjTxz+0xMpx3I52i+aalBK1QP19ggLF3Db89KJX7kjfOfP2eoa01qc++GwPgufPg==
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/get-intrinsic/-/get-intrinsic-1.0.2.tgz#6820da226e50b24894e08859469dc68361545d49"
+  integrity sha512-aeX0vrFm21ILl3+JpFFRNe9aUvp6VFZb2/CTbgLb8j75kOhvoNYjt9d8KA/tJG4gSo8nzEDedRl0h7vDmBYRVg==
   dependencies:
     function-bind "^1.1.1"
     has "^1.0.3"
@@ -4412,9 +4412,9 @@ html-comment-regex@^1.1.0:
   integrity sha512-P+M65QY2JQ5Y0G9KKdlDpo0zK+/OHptU5AaBwUfAIDJZk1MYf32Frm84EcOytfJE0t5JvkAnKlmjsXDnWzCJmQ==
 
 html-entities@^1.3.1:
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/html-entities/-/html-entities-1.3.3.tgz#3dca638a43ee7de316fc23067398491152ad4736"
-  integrity sha512-/VulV3SYni1taM7a4RMdceqzJWR39gpZHjBwUnsCFKWV/GJkD14CJ5F7eWcZozmHJK0/f/H5U3b3SiPkuvxMgg==
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/html-entities/-/html-entities-1.4.0.tgz#cfbd1b01d2afaf9adca1b10ae7dffab98c71d2dc"
+  integrity sha512-8nxjcBcd8wovbeKx7h3wTji4e6+rhaVuPNpMqwWgnHh+N9ToqsCs6XztWRBPQ+UtzsoMAdKZtUENoVzU/EMtZA==
 
 html-minifier@^3.2.3:
   version "3.5.21"
@@ -4594,9 +4594,9 @@ import-fresh@^2.0.0:
     resolve-from "^3.0.0"
 
 import-fresh@^3.0.0:
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/import-fresh/-/import-fresh-3.2.2.tgz#fc129c160c5d68235507f4331a6baad186bdbc3e"
-  integrity sha512-cTPNrlvJT6twpYy+YmKUKrTSjWFs3bjYjAhCwm+z4EOCubZxAuO+hHpRN64TqjEaYSHs7tJAE0w1CKMGmsG/lw==
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/import-fresh/-/import-fresh-3.3.0.tgz#37162c25fcb9ebaa2e6e53d5b4d88ce17d9e0c2b"
+  integrity sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==
   dependencies:
     parent-module "^1.0.0"
     resolve-from "^4.0.0"
