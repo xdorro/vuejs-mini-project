@@ -359,7 +359,7 @@ export default {
         () => {
           Swal.fire({
             icon: 'error',
-            title: 'Thêm học viên không thành công',
+            title: 'Sửa viên không thành công',
           });
         }
       );

@@ -45,7 +45,7 @@
             </thead>
 
             <tbody>
-              <tr v-for="(question, index) in filteredList" :key="index">
+              <tr v-for="(question, index) in questions" :key="index">
                 <th scope="row">{{ index + 1 }}</th>
                 <td>{{ question.question }}</td>
                 <td>
@@ -764,6 +764,7 @@ export default {
   computed: {
     filteredList() {
       return this.questions.filter((question) => {
+        console.log(question);
         return question.question
           .toLowerCase()
           .includes(this.search.toLowerCase());
